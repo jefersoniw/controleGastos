@@ -4,8 +4,11 @@ import datetime
 
 
 def home(request):
-    now = datetime.datetime.now()
+    data = {}
+    data['transacoes'] = ['tt1', 'tt2', 'tt3']
+
+    data['now'] = datetime.datetime.now()
     # html = "<html><body> Agora são %s. </body></html>" % now
     # return HttpResponse(html)
 
-    return render(request, 'contas/home.html')
+    return render(request, 'contas/home.html', data)
