@@ -9,13 +9,13 @@
 </head>
 <body>
 
-<h4>Listagem de Transações</h4>
-    <ul>
-    {% for tran in transacoes %}
-        <li>{{ tran.descricao }} - {{ tran.data }} - {{ tran.valor }} - {{ tran.categoria }}</li>
-    {% endfor %}
-    </ul>
+    <form method="POST">
+        {% csrf_token %}
 
-    <a href="{% url 'url_nova' %}">NOVO</a>
+        {{ form.as_p }}
+
+        <button type="submit">Salvar</button>
+    </form>
+
 </body>
 </html>
