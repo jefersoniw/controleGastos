@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
+from .models import Transacao
 
 
 def home(request):
@@ -12,3 +13,9 @@ def home(request):
     # return HttpResponse(html)
 
     return render(request, 'contas/home.html', data)
+
+
+def listagem(request):
+    data = {}
+    data['transacoes'] = Transacao.objects.all()
+    return render(request, 'contas/listagem.html', data)
