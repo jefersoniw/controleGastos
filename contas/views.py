@@ -17,12 +17,14 @@ def home(request):
 
 
 #METODOS DO CRUD
+#READ
 def listagem(request):
     data = {}
     data['transacoes'] = Transacao.objects.all()
     return render(request, 'contas/listagem.html', data)
 
 
+#CREATE
 def nova_transacao(request):
     data = {}
     form = TransacaoForm(request.POST or None)
@@ -32,6 +34,19 @@ def nova_transacao(request):
         return redirect('url_listagem')
 
     data['form'] = form
-
     return render(request, 'contas/form.html', data)
     #return render(request, 'contas/form.html', {'form': form})
+
+
+#UPDATE
+def update(request, pk):
+    data = {}
+    transacao = Transacao.objects.get(pk=pk)
+    form = TransacaoForm(request.POST or None, instance=transacao)
+
+    if form.is_valid():
+        form.save()
+        return redirect('url_listagem')
+
+    data['form'] = form
+    return render(request, 'contas/form.html', data)
