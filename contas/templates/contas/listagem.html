@@ -12,7 +12,7 @@
 <h4>Listagem de Transações</h4>
     <ul>
     {% for tran in transacoes %}
-        <li>{{ tran.descricao }} - {{ tran.data }} - {{ tran.valor }}</li>
+        <li>{{ tran.descricao }} - {{ tran.data }} - {{ tran.valor }} - {{ tran.categoria }}</li>
     {% endfor %}
     </ul>
 
